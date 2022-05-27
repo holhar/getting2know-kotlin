@@ -1,5 +1,8 @@
 package de.holhar.getting2knowkotlin.basics
 
+import de.holhar.getting2knowkotlin.functions.courseName
+import de.holhar.getting2knowkotlin.functions.topLevelFunction
+
 fun main() {
 
     // val signifies immutables
@@ -28,4 +31,9 @@ fun main() {
         DEF
     """.trimIndent() // trimIndent() removes the prefixed spaces
     println(multiLine)
+
+    // Use top-level function / property
+    val num = topLevelFunction()
+    println("Num is: $num")
+    println("courseName: $courseName")
 }
