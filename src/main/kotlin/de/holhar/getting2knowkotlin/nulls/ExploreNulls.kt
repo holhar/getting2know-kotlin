@@ -23,8 +23,19 @@ fun main() {
     val savedMovie = saveMovie(movie)
     println(savedMovie.id!!) // '!!' NON-NULL ASSERTION
     println("Saved movie: $savedMovie")
+
+    // Add non-null assertion to pass a nullable var to the function (would throw an exception here)
+    //printName(nameNullable!!)
+    // Alternative: Use scope function; 'run' will only be triggered when var is not null
+    nameNullable?.run {
+        printName(this)
+    }
 }
 
 fun saveMovie(movie: Movie) : Movie {
     return movie.copy(id = 1)
+}
+
+fun printName(name: String) {
+    println("Name is $name")
 }
