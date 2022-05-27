@@ -7,6 +7,12 @@ class Person(
         ) {
 
     var email : String = ""
+    var nameLength: Int = 0
+
+    init {
+        println("Inside init block")
+        nameLength = name.length
+    }
 
     // Secondary constructor - TRY TO AVOID THESE
     constructor(
@@ -34,5 +40,5 @@ fun main() {
 
     // Use named argument concept to target the secondary constructor
     val person3 = Person(_email = "abc@gmail.com", "Alex", 25)
-    println("Name: ${person3.name}; age: ${person3.age}; email: ${person3.email}")
+    println("Name: ${person3.name}; age: ${person3.age}; email: ${person3.email}, name length: ${person3.nameLength}")
 }
