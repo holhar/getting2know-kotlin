@@ -6,21 +6,22 @@ data class Movie(
 )
 
 fun main() {
-
     // Make var nullable by adding a question mark
     var nameNullable : String? = null
-    println("Value is : $nameNullable")
+    println("Value is : ${nameNullable?.length}") // '?' SAFE OPERATOR
 
-    nameNullable = "Holger"
-    println("Value is : $nameNullable")
+    //nameNullable = "Holger"
+    val length = nameNullable?.length ?: 0 // '?:' ELVIS OPERATOR (provide fallback in case of null)
+    println("length: $length")
 
     // Won't compile as name is a non-nullable variable
     //var name : String = null
     var name : String = "Holger"
 
-    // Use case where a nullable type is necessary: objects that are going to be persisted and get an id afterwards
+    // Use case where a nullable type is necessary: id is null when movie is initialized; objects that are going to be persisted and get an id afterwards
     val movie = Movie(null, "Avengers")
     val savedMovie = saveMovie(movie)
+    println(savedMovie.id!!) // '!!' NON-NULL ASSERTION
     println("Saved movie: $savedMovie")
 }
 

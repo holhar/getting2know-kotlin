@@ -19,7 +19,9 @@ fun checkType(type: Any) {
 fun castNumber(any: Any) {
     when(any) {
         // Apply cast
-        any as Double -> println("Value is Double")
+        // Add SAFE-OPERATOR '?' -> cast will only be performed, if it is safe to NOT throw an exception
+        any as? Double -> println("Value is Double")
+        any as? Int -> println("Value is Int")
     }
 }
 
@@ -31,7 +33,7 @@ fun main() {
 
     castNumber(1.0)
     // Throws ClassCastException -> Integer can not be cast to Double
-    //castNumber(1)
+    castNumber(1)
 
     val number = 1
     val numberToDouble = number.toDouble()
