@@ -18,6 +18,14 @@ class Student(name: String) : User(name) {
     // Override isLoggedIn variable by adding 'override' keyword
     override var isLoggedIn : Boolean = false
 
+    // Companion object can be used to introduce static functionalities that are tied to the class
+    companion object {
+
+        const val noOfEnrolledCourses = 10
+
+        fun country() = "Germany"
+    }
+
     // Override login function by adding 'override' keyword
     override fun login() {
         println("Inside student login")
@@ -34,6 +42,9 @@ fun main() {
     student.login()
     student.isLoggedIn = true
     println("Student isLoggedIn: ${student.isLoggedIn}")
+
+    println("Country is ${Student.country()}")
+    println("noOfEnrolledCourses is ${Student.noOfEnrolledCourses}")
 
     val instructor = Instructor("Dilip")
     println("Name is: ${instructor.name}")
