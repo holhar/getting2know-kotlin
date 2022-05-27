@@ -4,8 +4,16 @@ package de.holhar.getting2knowkotlin.classes
 data class Course(
     val id: Int,
     val name: String,
-    val author: String
+    val author: String,
+    val category: CourseCategory = CourseCategory.DEVELOPMENT
 )
+
+enum class CourseCategory {
+    DEVELOPMENT,
+    BUSINESS,
+    DESIGN,
+    MARKETING
+}
 
 fun main() {
     val course1 = Course(1, "Reactive programming in modern Java using project Reactor", "Dilip")
@@ -19,4 +27,7 @@ fun main() {
         id = 3, name = "Dilip3"
     )
     println(course3)
+
+    val course4 = Course(4, "Facebook Marketing", "Max Power", CourseCategory.MARKETING)
+    println(course4)
 }
