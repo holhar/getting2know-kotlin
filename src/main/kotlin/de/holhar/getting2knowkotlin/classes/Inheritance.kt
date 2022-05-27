@@ -10,6 +10,14 @@ open class User(val name : String) {
     open fun login() {
         println("Inside user login")
     }
+
+    private fun secret() {
+        println("user secret function")
+    }
+
+    protected open fun logout() {
+        println("user logout function")
+    }
 }
 
 // Student class is extending User class
@@ -32,6 +40,11 @@ class Student(name: String) : User(name) {
         // Call login() function from super class
         super.login()
     }
+
+    // Override protected method and make it public!
+    public override fun logout() {
+        println("student logout function")
+    }
 }
 
 class Instructor(name: String) : User(name)
@@ -49,4 +62,12 @@ fun main() {
     val instructor = Instructor("Dilip")
     println("Name is: ${instructor.name}")
     instructor.login()
+
+    val user = User("Holger")
+    // Private/protected function not accessible
+    //user.secret()
+    //user.logout()
+
+    // In student logout function is available
+    student.logout()
 }
