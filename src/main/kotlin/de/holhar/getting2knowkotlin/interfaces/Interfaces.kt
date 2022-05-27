@@ -3,10 +3,14 @@ package de.holhar.getting2knowkotlin.interfaces
 import de.holhar.getting2knowkotlin.classes.Course
 
 interface CourseRepository {
+
+    var isCoursePersisted : Boolean
+
     fun getById(id: Int) : Course
 
     // Provide default method
     fun save(course: Course) : Int {
+        isCoursePersisted = true
         println("save course : $course")
         return course.id
     }
@@ -18,6 +22,8 @@ interface Repository {
 
 // Implementing multiple interfaces
 class SqlCourseRepository : CourseRepository, Repository {
+    override var isCoursePersisted: Boolean = false
+
     override fun getById(id: Int): Course {
         return Course(id, "Reactive programming in modern Java using project Reactor", "Dilip")
     }
@@ -28,12 +34,15 @@ class SqlCourseRepository : CourseRepository, Repository {
 }
 
 class NoSqlCourseRepository : CourseRepository {
+    override var isCoursePersisted: Boolean = false
+
     override fun getById(id: Int): Course {
         return Course(id, "Reactive programming in modern Java using project Reactor", "Dilip")
     }
 
     // Override default implementation of interface
     override fun save(course: Course): Int {
+        isCoursePersisted = true
         println("save course in NoSqlCourseRepository: $course")
         return course.id
     }
@@ -70,6 +79,7 @@ fun main() {
             "Dilip"
         )
     )
+    println("Course is persisted: ${sqlCourseRepository.isCoursePersisted}")
     println("Saved course id is $savedCourseId")
 
     val noSqlCourseRepository = NoSqlCourseRepository()
@@ -82,6 +92,7 @@ fun main() {
             "Dilip"
         )
     )
+    println("Course is persisted: ${noSqlCourseRepository.isCoursePersisted}")
     println("Saved course id is $savedCourseId2")
 
     val ab = AB()
