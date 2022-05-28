@@ -5,7 +5,7 @@ data class Course(
     val id: Int,
     val name: String,
     val author: String,
-    val category: CourseCategory = CourseCategory.DEVELOPMENT
+    var category: CourseCategory = CourseCategory.DEVELOPMENT
 )
 
 enum class CourseCategory {
