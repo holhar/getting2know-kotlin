@@ -16,6 +16,8 @@ fun main() {
     exploreMap(courseList, designPredicate)
 
     exploreFlatMap(courseList, KAFKA)
+
+    exploreHashMap()
 }
 
 fun exploreFilter(
@@ -64,4 +66,29 @@ private fun exploreFlatMap(courseList: MutableList<Course>, kafka: String) {
         }
     }
     println("Kafka courses: $kafkaCourses")
+}
+
+fun exploreHashMap() {
+
+    val nameAgeMutableMap = mutableMapOf("Holger" to 36, "Scooby" to 5, "Tom" to 50)
+    nameAgeMutableMap.forEach { (k, v) ->
+        println("Key: $k, value: $v")
+    }
+
+    //val value = nameAgeMutableMap.get("Holger")
+    //val value = nameAgeMutableMap["Holger"]
+    val value = nameAgeMutableMap.getOrElse("Holger1") { "abc" }
+    println("Value is $value")
+
+    val result = nameAgeMutableMap.containsKey("abc")
+    println("Result is $result")
+
+    val filteredMap = nameAgeMutableMap
+        .filterKeys { it.length > 5 }
+        .map { it.key.uppercase() }
+    println("filteredMap is $filteredMap")
+
+    val maxAge = nameAgeMutableMap
+        .maxByOrNull { it.value }
+    println("Max age has $maxAge")
 }
