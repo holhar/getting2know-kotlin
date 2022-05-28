@@ -18,6 +18,8 @@ fun main() {
     exploreFlatMap(courseList, KAFKA)
 
     exploreHashMap()
+
+    collectionsNullability()
 }
 
 fun exploreFilter(
@@ -91,4 +93,23 @@ fun exploreHashMap() {
     val maxAge = nameAgeMutableMap
         .maxByOrNull { it.value }
     println("Max age has $maxAge")
+}
+
+fun collectionsNullability() {
+
+    // Specify a nullable list
+    var list1 : MutableList<String>? = null
+
+    list1 = mutableListOf()
+    list1.add("Holger")
+    list1.forEach {
+        println("Value is $it")
+    }
+
+    // Specify nullable elements
+    val list2 : List<String?> = listOf("Adam", null, "Alex")
+    list2.forEach {
+        // Add safe operator
+        println("Value is ${it?.length}")
+    }
 }
