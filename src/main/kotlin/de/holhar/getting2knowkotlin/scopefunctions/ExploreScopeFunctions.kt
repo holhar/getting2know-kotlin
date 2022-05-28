@@ -7,6 +7,8 @@ fun main() {
     exploreApply()
 
     exploreAlso()
+
+    exploreLet()
 }
 
 fun exploreApply() {
@@ -38,4 +40,22 @@ fun exploreAlso() {
     }
 
     println("course: $course")
+}
+
+fun exploreLet() {
+
+    val numbers = mutableListOf(1, 2, 3, 4, 5)
+    val result1 = numbers.map { it * 2 }.filter { it > 5 }.let {
+        println(it)
+        it.sum()
+    }
+    println(result1)
+
+    var name : String? = null
+    name = "Holger"
+    val result2 = name?.let {
+        println(it)
+        it.uppercase()
+    }
+    println(result2)
 }
