@@ -6,9 +6,13 @@ import de.holhar.getting2knowkotlin.dataset.courseList
 
 fun main() {
     val courseList = courseList()
+
     val devPredicate = { c: Course -> c.category == CourseCategory.DEVELOPMENT }
     val designPredicate = { c: Course -> c.category == CourseCategory.DESIGN }
+
     exploreFilter(courseList, devPredicate)
+
+    exploreMap(courseList, designPredicate)
 }
 
 fun exploreFilter(
@@ -19,4 +23,14 @@ fun exploreFilter(
     courseList
         .filter { predicate.invoke(it) }
         .forEach { println("course: $it") }
+}
+
+fun exploreMap(
+    courseList: MutableList<Course>,
+    predicate: (Course) -> Boolean
+) {
+    courseList
+        .filter { predicate.invoke(it) }
+        .map { "${it.name} - ${it.category}" }
+        .forEach { println(it) }
 }
