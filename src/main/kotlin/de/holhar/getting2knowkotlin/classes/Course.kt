@@ -1,5 +1,7 @@
 package de.holhar.getting2knowkotlin.classes
 
+import de.holhar.getting2knowkotlin.CourseJava
+
 // Using data classes - automatically create toString(), hash(), equals(), and copy() methods
 data class Course(
     val id: Int,
@@ -30,4 +32,10 @@ fun main() {
 
     val course4 = Course(4, "Facebook Marketing", "Max Power", CourseCategory.MARKETING)
     println(course4)
+
+    val courseJava = CourseJava(2, "Facebook Marketing", "Dilip")
+    println("courseJava $courseJava")
+    courseJava.id = 3
+    courseJava.name = "something Different"
+    println("courseJava $courseJava")
 }
