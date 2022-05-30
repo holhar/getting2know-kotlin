@@ -4,6 +4,7 @@ package de.holhar.getting2knowkotlin.classes
 // Equivalent to a singleton pattern in Java
 object Authenticate {
 
+    @JvmStatic
     fun authenticate(userName: String, password: String) {
         println("User ${userName} authenticated")
     }

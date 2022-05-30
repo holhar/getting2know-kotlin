@@ -1,20 +1,39 @@
+@file:JvmName("CourseUtils")
+
 package de.holhar.getting2knowkotlin.classes
 
 import de.holhar.getting2knowkotlin.CourseJava
 
 // Using data classes - automatically create toString(), hash(), equals(), and copy() methods
-data class Course(
+data class Course @JvmOverloads constructor(
     val id: Int,
     val name: String,
     val author: String,
     var category: CourseCategory = CourseCategory.DEVELOPMENT
-)
+) {
+    @JvmField
+    var noOfCourses = 10
+
+    companion object {
+
+        @JvmStatic
+        fun printName(name: String = "default") {
+            println("name: $name")
+        }
+    }
+}
 
 enum class CourseCategory {
     DEVELOPMENT,
     BUSINESS,
     DESIGN,
     MARKETING
+}
+
+@JvmName("printNameWithFallback")
+@JvmOverloads
+fun printName(name: String = "default") {
+    println("name: $name")
 }
 
 fun main() {
